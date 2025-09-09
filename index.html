@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="بازی مار کلاسیک - دانلود بازی مار برای ویندوز و مشاهده سورس کد">
+    <meta name="keywords" content="بازی مار, دانلود بازی, بازی کلاسیک, بازی ویندوز, سورس کد بازی">
+    <title>بازی مار | بازی کلاسیک و سرگرم‌کننده</title>
+    <style>
+        /* Reset و استایل‌های پایه */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* نوار ناوبری */
+        nav {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        /* محتوای اصلی */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* صفحه اصلی */
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background-color: #2c3e50;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #1a252f;
+        }
+        
+        /* صفحه درباره بازی */
+        .about-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-content h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        
+        .about-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        /* صفحه تماس با ما */
+        .contact-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .contact-content h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .email {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.3rem;
+            direction: ltr;
+            display: block;
+            margin: 1rem 0;
+        }
+        
+        /* پاورقی */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        /* طراحی واکنش‌گرا */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin: 0 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">بازی مار</div>
+            <ul class="nav-links">
+                <li><a href="#" data-page="home">خانه</a></li>
+                <li><a href="#" data-page="about">درباره بازی</a></li>
+                <li><a href="#" data-page="contact">تماس با ما</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <!-- صفحه اصلی -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>بازی مار کلاسیک</h1>
+                <p>یک بازی سرگرم‌کننده و نوستالژی برای همه سنین</p>
+            </div>
+            
+            <div class="intro">
+                <p>بازی مار یک بازی کلاسیک و جذاب است که در آن شما یک مار را کنترل می‌کنید و باید غذا جمع‌آوری کنید تا رشد کنید. مراقب باشید که به دیوارها یا بدن خودتان برخورد نکنید!</p>
+                
+                <div class="download-buttons">
+                    <a href="https://github.com/mahdianimator/snakegame/releases/download/Releases/Snake.Game_Win32.exe" class="btn">دانلود برای ویندوز 32 بیتی</a>
+                    <a href="https://github.com/mahdianimator/snakegame/releases/download/Releases/Snake.Game_Win32.exe" class="btn">دانلود برای ویندوز 64 بیتی</a>
+                    <a href="https://github.com/mahdianimator/snakegame" class="btn btn-secondary">سورس کد</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- صفحه درباره بازی -->
+        <div id="about" class="page">
+            <div class="about-content">
+                <h2>درباره بازی مار</h2>
+                <p>بازی مار یکی از محبوب‌ترین و شناخته‌شده‌ترین بازی‌های تاریخ کامپیوتر است که برای اولین بار در دهه 1970 معرفی شد و پس از آن در انواع پلتفرم‌ها و دستگاه‌های مختلف ارائه شده است.</p>
+                
+                <p>این بازی با وجود سادگی، بسیار اعتیادآور و سرگرم‌کننده است. هدف اصلی بازی، کنترل مار برای جمع‌آوری غذا است که با هر غذا، اندازه مار بزرگتر می‌شود و بازی دشوارتر می‌شود.</p>
+                
+                <p>بازی مار حاضر با استفاده از تکنولوژی‌های وب یعنی HTML، CSS و JavaScript توسعه یافته است. این بازی سپس با استفاده از نرم‌افزار HTML Compiler به فایل اجرایی EXE تبدیل شده است که امکان اجرای آن را بدون نیاز به مرورگر فراهم می‌کند.</p>
+                
+                <p>ویژگی‌های این نسخه از بازی مار:</p>
+                <ul>
+                    <li>گرافیک ساده ولی جذاب</li>
+                    <li>کنترل آسان با کلیدهای جهت‌دار</li>
+                    <li>سیستم امتیازدهی پیشرفته</li>
+                    <li>قابلیت اجرا روی ویندوز 32 و 64 بیتی</li>
+                </ul>
+                
+                <p>این بازی برای همه سنین مناسب است و می‌تواند ساعات زیادی از سرگرمی را برای شما فراهم کند. چه به دنبال یک بازی نوستالژیک باشید و چه بخواهید زمان خود را با یک چالش جذاب پر کنید، بازی مار انتخاب مناسبی است.</p>
+            </div>
+        </div>
+        
+        <!-- صفحه تماس با ما -->
+        <div id="contact" class="page">
+            <div class="contact-content">
+                <h2>تماس با ما</h2>
+                <p>از طریق ایمیل زیر می‌توانید با ما در ارتباط باشید:</p>
+                <a href="mailto:mahdi0animator@gmail.com" class="email">mahdi0animator@gmail.com</a>
+                <p>ما به نظرات، پیشنهادات و انتقادات شما ارزش قائلیم و در اسرع وقت پاسخگو خواهیم بود.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 بازی مار. تمام حقوق محفوظ است.</p>
+    </footer>
+
+    <script>
+        // مدیریت پیمایش بین صفحات
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const pages = document.querySelectorAll('.page');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    // غیرفعال کردن همه صفحات
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // فعال کردن صفحه هدف
+                    document.getElementById(targetPage).classList.add('active');
+                    
+                    // به روزرسانی وضعیت فعال منو
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
